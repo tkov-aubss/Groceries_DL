@@ -49,7 +49,7 @@ A **leakage check** hashes every image with MD5 and removes any validation image
 |---|---|
 | `EXAM_Part2.ipynb` | Development notebook with all outputs. Covers EDA, the leakage check, the four from-scratch models, the comparison table, validation diagnostics, and EfficientNetV2B0 (frozen, then fine-tuned) |
 | `EXAM_Part2_FINAL.ipynb` | Cleaned, unified version of the pipeline, saved without outputs. **Section A** retrains the best from-scratch architecture and the fine-tuned EfficientNet on `train + val` combined. **Section B** loads both checkpoints and evaluates them on `test/` |
-| `ML4BI2_EXAM Part1.ipynb` | Exam-day notebook. Loads the two saved models, evaluates them on `test/` and answers the exam questions: confusion matrix, Grad-CAM on the worst predictions, and a new small CNN trained under time pressure |
+| `03_exam_day_evaluation.ipynb` | Exam-day notebook. Loads the two saved models, evaluates them on `test/` and answers the exam questions: confusion matrix, Grad-CAM on the worst predictions, and a new small CNN trained under time pressure |
 | `figures/` | Plots exported from the notebooks for this README |
 
 ---
@@ -101,7 +101,7 @@ Fine-tuning the top of EfficientNet adds a further 2–3 percentage points over 
 
 ![Fine-tuned EfficientNet learning curves](figures/curves_efficientnet_finetuned.png)
 
-### Test set (exam day, `ML4BI2_EXAM Part1.ipynb`)
+### Test set (exam day, `03_exam_day_evaluation.ipynb`)
 
 The final models were retrained on `train + val` combined and then evaluated once on the 495 unseen test images:
 
@@ -139,7 +139,7 @@ The notebooks were written for **Google Colab** with a GPU (T4 is enough).
 
 1. Upload the dataset zip to Google Drive, then change `ZIP_PATH`, `DRIVE_DIR` and `MODEL_DIR` in the setup cell to match your Drive.
 2. Open the notebook in Colab and choose *Runtime → Change runtime type → GPU*.
-3. Run `EXAM_Part2_FINAL.ipynb` Section A to train and save both models (about 2.5–3 h on a T4). Then run Section B, or `ML4BI2_EXAM Part1.ipynb`, to evaluate them on `test/`.
+3. Run `EXAM_Part2_FINAL.ipynb` Section A to train and save both models (about 2.5–3 h on a T4). Then run Section B, or `03_exam_day_evaluation.ipynb`, to evaluate them on `test/`.
 
 Main dependencies: TensorFlow 2.20 (Keras), NumPy, pandas, Matplotlib, scikit-learn, Pillow.
 
